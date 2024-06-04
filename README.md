@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Tasker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Tasker is a project management tool designed to streamline task assignments and tracking for developers. Users can create unique rooms where developers can enter using a six-digit code to view and manage their tasks.
 
-## Available Scripts
+## Features
+- **Room Creation**: Easily create a room for task management.
+- **Unique Code Generation**: Each room is assigned a unique six-digit code.
+- **Developer Access**: Developers can join rooms using the unique code.
+- **Task Management**: View and manage tasks within the room.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
+- Node.js
+- npm (Node Package Manager)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/tasker.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd tasker
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Running the Application
+1. Start the server:
+   ```bash
+   npm start
+   ```
+2. Open your browser and navigate to `http://localhost:3000`
 
-### `npm test`
+## Usage
+1. **Creating a Room**:
+   - Click on the "Create Room" button.
+   - A unique six-digit code will be generated for the room.
+2. **Joining a Room**:
+   - Enter the six-digit code in the "Join Room" section.
+   - View and manage the tasks assigned in the room.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributing
+We welcome contributions! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
-### `npm run build`
+## License
+This project is licensed under the MIT License.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contact
+For any questions or suggestions, please reach out to us at [mullerhihi@gmail.com](mailto:email@example.com).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for using Tasker!
