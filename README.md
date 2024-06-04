@@ -18,7 +18,7 @@ Tasker is a project management tool designed to streamline task assignments and 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/tasker.git
+   git clone https://github.com/MulugetaNigus/tasker.git
    ```
 2. Navigate to the project directory:
    ```bash
