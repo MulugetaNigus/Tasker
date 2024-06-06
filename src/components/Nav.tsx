@@ -16,12 +16,14 @@ function Nav({ content, Path }: any) {
       </div>
       <div className="rightNav flex items-center justify-center mt-2 gap-2">
         <p className="border-0 transform hover:scale-105 duration-200 text-violet-700 hover:shadow-md rounded py-2 md:px-8 px-3 cursor-pointer hover:bg-slate-200 font-extrabold font-serif">
-          HELLO DEVELOPER :{" "}
+          HELLO DEVELOPER : {" "}
           {window.localStorage.getItem("TaskerUser")?.toLowerCase()}
         </p>
       </div>
       <p className="border-0 transform hover:scale-105 duration-200 text-violet-700 hover:shadow-md rounded py-2 md:px-8 px-3 cursor-pointer hover:bg-slate-200 font-extrabold font-serif">
-        <Link to={Path} className="text-decoration-none">{content}</Link>
+        <Link to={Path} className="text-decoration-none">
+          {content}
+        </Link>
       </p>
     </div>
   );
