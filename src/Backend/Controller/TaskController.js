@@ -112,6 +112,11 @@ const userLogin = async (req, res) => {
     // get the inputs from the user
     const { username, password } = req.body;
 
+     // check if the username and passwords are not empty
+    if (!username || !password) {
+       return req.status(400).json({ message: "all feilds are required !" });
+    }
+
     // find the user based on the user username
     const findUser = await User.findOne({ username });
 

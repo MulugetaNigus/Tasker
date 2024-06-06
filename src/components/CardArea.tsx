@@ -75,7 +75,7 @@ const CardArea = () => {
   return (
     <>
       {/* navigation */}
-      <Nav />
+      <Nav content="Browse Rooms" Path="/rooms"/>
 
       {/* main part */}
       <div className="tasks grid items-center md:justify-evenly m-8 gap-3 md:grid-cols-3 mt-10 md:m-10">
@@ -96,9 +96,9 @@ const CardArea = () => {
                 {task.tasks &&
                   task.tasks.map((singleTask, index) => (
                     <>
-                      <label className="form-check-label text-white text-xl">
+                      <li className="form-check-label text-white text-xl">
                         {singleTask}
-                      </label>
+                      </li>
                       {/* {
                       index > 0 &&( */}
                       {/* <div className="form-check">

@@ -32,7 +32,6 @@ const Modal = () => {
   // handle the join the room
   const navigate = useNavigate();
   const handleJoinRom = () => {
-    
     if (JoinRoom === "" && JoinRoom.length === 6) {
       return setXJoinRoom(true);
     }
@@ -57,7 +56,7 @@ const Modal = () => {
 
   return (
     <>
-      <Nav />
+      <Nav content="Browse Rooms" Path="/rooms" />
       <div className="flex flex-column items-start justify-center mx-auto md:mx-2 md:mt-20 mt-20 mb-10 border-2 md:w-3/6 border-gray-200 rounded-md shadow-xl p-3 md:m-2">
         {/* header */}
         <h1 className="font-extrabold text-violet-600 text-start font-serif md:text-6xl text-3xl mb-2">
@@ -66,7 +65,7 @@ const Modal = () => {
         {/* inputs for the pincodes */}
         {/* <div className="inputs flex items-start justify-start"> */}
         <input
-          type="number"
+          type="text"
           className="border-2 rounded-md border-violet-300 md:w-2/6 p-3 placeholder:text-violet-500"
           placeholder="Enter Your Join Number.."
           onChange={(e) => setJoinRoom(e.target.value)}
@@ -86,7 +85,9 @@ const Modal = () => {
             Agree With Term and Policy !
           </p>
         </div> */}
-        <div className="text-muted mt-3">By Joining The Room We Are Assuming Agree With Our Privacy-Policy !</div>
+        <div className="text-muted mt-3">
+          By Joining The Room We Are Assuming Agree With Our Privacy-Policy !
+        </div>
         <div className="actionBtn flex items-start justify-between mt-2 md:gap-5 gap-2">
           <b
             className="border-1 text-white rounded py-3 px-10 cursor-pointer transition hover:scale-110 ease-out duration-300 bg-violet-700 font-extrabold font-serif"
@@ -96,7 +97,9 @@ const Modal = () => {
           </b>
           <b
             className="border-1 text-white rounded py-3 px-10 cursor-pointer transition hover:scale-110 ease-out duration-300 bg-red-400 font-extrabold font-serif"
-            onClick={() => { setJoinRoom("")}}
+            onClick={() => {
+              setJoinRoom("");
+            }}
           >
             Reset
           </b>

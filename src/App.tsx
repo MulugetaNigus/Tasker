@@ -7,6 +7,7 @@ import CardArea from "./components/CardArea";
 import CreateRoom from "./components/CreateRoom";
 import UserReg from "./components/UserReg";
 import UserLogin from "./components/UserLogin";
+import ManageRooms from "./components/ManageRooms";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/JoinRoom" element={<Modal />} />
           <Route path="/AfterJoinRoom" element={<CardArea />} />
           <Route path="/CreateRoom" element={<CreateRoom />} />
+          <Route path="/rooms" element={ <ManageRooms /> } />
         </Routes>
       </Router>
     </>

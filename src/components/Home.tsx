@@ -27,7 +27,9 @@ const Home = () => {
             </Link>
           </p>
           <p className="border-1 text-violet-700 hover:scale-110 rounded py-3 px-10 cursor-pointer hover:transition ease-out duration-300 bg-violet-100 font-extrabold font-serif">
-            <Link to="/CreateRoom" className="text-decoration-none">Create Room</Link>
+            <Link to="/CreateRoom" className="text-decoration-none">
+              Create Room
+            </Link>
           </p>
         </div>
         <div className="side"></div>

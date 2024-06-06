@@ -8,7 +8,7 @@ import Fotter from "./Footer"
 const  Wrapper = () => {
   return (
     <>
-      <Nav />
+      <Nav content="Browse Rooms" Path="/rooms"/>
       <Home />
       <Fotter />
     </>
