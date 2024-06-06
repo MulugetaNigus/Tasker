@@ -28,7 +28,7 @@ const getTask = async (req, res) => {
     // unless, everything is okay save to your db
     const GetTask = await Task.find({});
     if (!GetTask) {
-      return res.status(400).json({ message: "task did not get the tasks !" });
+      return res.status(400).json({ message: "did't get the tasks !" });
     }
     return res.status(201).json({ message: "success", GetTask });
   } catch (error) {

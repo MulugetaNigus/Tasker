@@ -21,7 +21,7 @@ function Nav({ content, Path }: any) {
         </p>
       </div>
       <p className="border-0 transform hover:scale-105 duration-200 text-violet-700 hover:shadow-md rounded py-2 md:px-8 px-3 cursor-pointer hover:bg-slate-200 font-extrabold font-serif">
-        <Link to={Path}>{content}</Link>
+        <Link to={Path} className="text-decoration-none">{content}</Link>
       </p>
     </div>
   );
