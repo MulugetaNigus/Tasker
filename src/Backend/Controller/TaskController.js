@@ -1,9 +1,10 @@
 const Task = require("../Model/CreateRoom.Model");
 const User = require("../Model/UserReg.model");
 
-// add route
+// add the task for the developers
 const addTask = async (req, res) => {
   try {
+    
     // grab the value from the req body
     const { roomID, devName, tasks } = req.body;
 
@@ -11,12 +12,13 @@ const addTask = async (req, res) => {
     if (!roomID || !devName || !tasks) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
+    
     // unless, everything is okay save to your db
     const submitTask = await Task.create(req.body);
     if (!submitTask) {
-      return res.status(400).json({ message: "task did not submitted !" });
+      return res.status(400).json({ message: "task did not added !" });
     }
-    return res.status(201).json({ message: "success", submitTask });
+    return res.status(201).json({ message: "successfully added the task", submitTask });
   } catch (error) {
     return res.status(400).json(error.message);
   }
@@ -25,7 +27,8 @@ const addTask = async (req, res) => {
 // get the task
 const getTask = async (req, res) => {
   try {
-    // unless, everything is okay save to your db
+    
+    // get the all tasks from the database
     const GetTask = await Task.find({});
     if (!GetTask) {
       return res.status(400).json({ message: "did't get the tasks !" });
@@ -36,7 +39,7 @@ const getTask = async (req, res) => {
   }
 };
 
-// find and join the task area
+// find and join the task area to view the tasks
 const getDevArea = async (req, res) => {
   try {
     const ROOMID = req.query.roomID;
@@ -72,7 +75,7 @@ const updateTask = async (req, res) => {
   }
 };
 
-// register user
+// register a new user
 const userReg = async (req, res) => {
   try {
     // get the inputs
