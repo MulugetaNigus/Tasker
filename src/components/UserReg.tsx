@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { IUserReg } from "../Types/App.Type";
 import Spinner from "react-bootstrap/Spinner";
+import toast, { Toaster } from "react-hot-toast";
 
 const UserReg = () => {
   // containers to hold user info
@@ -19,6 +20,13 @@ const UserReg = () => {
   // error logger
   const [errorLogger, seterrorLogger] = useState("");
   const navigate = useNavigate();
+
+  // toast notifications
+  const notify = (): string =>
+    toast.success("successfully Registerd.", {
+      duration: 2000,
+      position: "top-right"
+    });
 
   // to handle user reg
   const handleReg = async () => {
@@ -52,7 +60,8 @@ const UserReg = () => {
             setloading(false);
             // load username to the localStorage
             window.localStorage.setItem("TaskerUser", username);
-            navigate("/login");
+            // navigate("/login");
+
           })
           .catch((err) => {
             seterrorLogger(err.response);
@@ -123,6 +132,7 @@ const UserReg = () => {
             )}
           </p>
         </div>
+        <Toaster />
       </div>
     </>
   );
