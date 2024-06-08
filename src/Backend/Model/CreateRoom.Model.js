@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// create a room for the developers model
 const RoomCreation = mongoose.Schema({
   roomID: {
     type: String,
@@ -21,5 +22,6 @@ const RoomCreation = mongoose.Schema({
   ],
 });
 
+// export the final model
 const Task = mongoose.model("Tasks", RoomCreation);
 module.exports = Task;
