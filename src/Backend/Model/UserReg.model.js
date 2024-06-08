@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// a model for the user registration
 const UserReg = mongoose.Schema({
   username: {
     type: String,
@@ -12,5 +13,6 @@ const UserReg = mongoose.Schema({
   },
 });
 
+// export the final model
 const UserRegistration = mongoose.model("Users", UserReg);
 module.exports = UserRegistration;
