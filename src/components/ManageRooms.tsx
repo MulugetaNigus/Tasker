@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ITask } from "../Types/App.Type";
 import Spinner from "react-bootstrap/Spinner";
+import axios from "axios";
+
+// room ID
+let ACCESSCODE: string = "";
 
 const ManageRooms = () => {
   // container to hold the values
@@ -27,8 +30,9 @@ const ManageRooms = () => {
             // stop loading simulation
             setloading(false);
 
-            //   console.log(result.data.GetTask);
+            console.log(result.data.GetTask);
             const data = result.data.GetTask;
+            ACCESSCODE = data[0].accessCode;
 
             //  here we can filter out the value
             const getSearchRoom = data.filter(
@@ -61,10 +65,42 @@ const ManageRooms = () => {
 
   //   to delete the specific room
   const navigate = useNavigate();
-  const handleDeleteRomm = () => {
+  const handleRomm = () => {
     window.localStorage.setItem("devArea", Urooms);
     // navgate to the right place
     navigate("/AfterJoinRoom");
+  };
+
+  // to delete the room if you know the access code
+  const handleDeleteRomm = async () => {
+    // filter here to delete the specific room
+    // const findRoom = rooms?.filter( (fildOut : ITask) => fildOut.accessCode !== "1")
+    // console.log(findRoom.map( (id) => id.accessCode));
+    const ConfirmAcessCode = window.prompt("Enter The Access Code");
+
+    if (ConfirmAcessCode) {
+      if (ConfirmAcessCode === ACCESSCODE) {
+        // alert("success !");
+        let accessCode = ACCESSCODE;
+        try {
+          await axios
+            .delete("http://localhost:3001/api/v1/delete", {
+              data: { accessCode },
+            })
+            .then(() => {
+              alert("successfuly Deleted !");
+            })
+            .catch((err) => {
+              alert("something went wrong, try again !");
+              console.log(err);
+            });
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        alert("incorrect access code !");
+      }
+    }
   };
 
   return (
@@ -98,8 +134,31 @@ const ManageRooms = () => {
         </div>
       </div>
 
+      {/*  */}
+      {rooms?.length && (
+        <div className="flex items-center justify-between shadow-md rounded-md w-3/6 mx-auto mt-12 p-3">
+          <p className="font-extrabold text-violet-500 text-lg">
+            ID : {Urooms}
+          </p>
+          <b
+            className="border-1 text-black rounded py-3 px-10 cursor-pointer transition hover:scale-110 ease-out duration-300 bg-violet-300 font-extrabold font-serif"
+            onClick={() => handleRomm()}
+          >
+            join
+          </b>
+
+          <b
+            className="border-1 text-black rounded py-3 px-10 cursor-pointer transition hover:scale-110 ease-out duration-300 bg-red-300 font-extrabold font-serif"
+            onClick={() => handleDeleteRomm()}
+          >
+            Delete Room
+          </b>
+        </div>
+      )}
+      {/*  */}
+
       {/* rooms detail */}
-      {rooms?.length ? (
+      {/* {rooms?.length ? (
         rooms.map((roomData) => (
           <div className="flex items-center justify-between shadow-md rounded-md w-3/6 mx-auto mt-2 p-3">
             <p className="font-extrabold text-violet-500 text-lg">
@@ -111,13 +170,21 @@ const ManageRooms = () => {
             >
               join
             </b>
+
+            <b
+              className="border-1 text-black rounded py-3 px-10 cursor-pointer transition hover:scale-110 ease-out duration-300 bg-red-300 font-extrabold font-serif"
+              onClick={() => handleDeleteRomm()}
+            >
+              Delete Room
+            </b>
           </div>
         ))
       ) : (
         <p className="flex items-center justify-center mx-auto mt-5 font-extrabold text-red-600 ">
           {InvaliedRoomNo}
         </p>
-      )}
+      )} */}
+
       {loading && (
         <div className="flex items-center justify-center mt-5">
           <Spinner animation="border" role="status">

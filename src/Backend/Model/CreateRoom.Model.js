@@ -6,6 +6,10 @@ const RoomCreation = mongoose.Schema({
     type: String,
     required: true,
   },
+  accessCode: {
+    type: String,
+    required: true,
+  },
   devName: {
     type: String,
     required: true,

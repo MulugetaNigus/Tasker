@@ -1,24 +1,27 @@
+// import Task model
 const Task = require("../Model/CreateRoom.Model");
+// import User model
 const User = require("../Model/UserReg.model");
 
 // add the task for the developers
 const addTask = async (req, res) => {
   try {
-    
     // grab the value from the req body
-    const { roomID, devName, tasks } = req.body;
+    const { roomID, accessCode, devName, tasks } = req.body;
 
     // check the value actual set
-    if (!roomID || !devName || !tasks) {
+    if (!roomID || !accessCode || !devName || !tasks) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
-    
+
     // unless, everything is okay save to your db
     const submitTask = await Task.create(req.body);
     if (!submitTask) {
       return res.status(400).json({ message: "task did not added !" });
     }
-    return res.status(201).json({ message: "successfully added the task", submitTask });
+    return res
+      .status(201)
+      .json({ message: "successfully added the task", submitTask });
   } catch (error) {
     return res.status(400).json(error.message);
   }
@@ -27,7 +30,6 @@ const addTask = async (req, res) => {
 // get the task
 const getTask = async (req, res) => {
   try {
-    
     // get the all tasks from the database
     const GetTask = await Task.find({});
     if (!GetTask) {
@@ -75,6 +77,23 @@ const updateTask = async (req, res) => {
   }
 };
 
+// Delete endpoint
+const deleteRoom = async (req, res) => {
+  const { accessCode } = req.body;
+  if (!accessCode) {
+    return res.status(400).json({ message: 'Access code is required' });
+  }
+  try {
+    const result = await Task.findOneAndDelete({ accessCode });
+    if (!result) {
+      return res.status(404).json({ message: 'Document not found' });
+    }
+    res.status(200).json({ message: 'Document deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err });
+  }
+};
+
 // register a new user
 const userReg = async (req, res) => {
   try {
@@ -115,9 +134,9 @@ const userLogin = async (req, res) => {
     // get the inputs from the user
     const { username, password } = req.body;
 
-     // check if the username and passwords are not empty
+    // check if the username and passwords are not empty
     if (!username || !password) {
-       return req.status(400).json({ message: "all feilds are required !" });
+      return req.status(400).json({ message: "all feilds are required !" });
     }
 
     // find the user based on the user username
@@ -128,9 +147,7 @@ const userLogin = async (req, res) => {
       if (findUser.password === password) {
         return res.status(200).json({ message: "success" });
       } else {
-        return res
-          .status(200)
-          .json({ message: "Xpassword" });
+        return res.status(200).json({ message: "Xpassword" });
       }
     } else {
       return res.status(400).json({ message: "user not found !" });
@@ -147,4 +164,5 @@ module.exports = {
   updateTask,
   userReg,
   userLogin,
+  deleteRoom
 };

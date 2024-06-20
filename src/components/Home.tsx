@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+
+  // make the hard loading to know the current path
+  // setTimeout(() => {
+  //   window.location.reload();
+  // }, 2000);
+
   return (
     <>
       {/* main banner */}
@@ -12,7 +18,7 @@ const Home = () => {
           <span className="text-black md:text-7xl text-5xl font-serif font-extrabold">
             Project
           </span>{" "}
-          Idea.
+          Dev.
         </p>
         <div className="side"></div>
       </div>

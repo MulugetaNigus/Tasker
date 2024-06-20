@@ -21,13 +21,6 @@ const UserReg = () => {
   const [errorLogger, seterrorLogger] = useState("");
   const navigate = useNavigate();
 
-  // toast notifications
-  const notify = (): string =>
-    toast.success("successfully Registerd.", {
-      duration: 2000,
-      position: "top-right"
-    });
-
   // to handle user reg
   const handleReg = async () => {
     // check the inputs passed properlly
@@ -60,8 +53,7 @@ const UserReg = () => {
             setloading(false);
             // load username to the localStorage
             window.localStorage.setItem("TaskerUser", username);
-            // navigate("/login");
-
+            navigate("/login");
           })
           .catch((err) => {
             seterrorLogger(err.response);
@@ -75,7 +67,7 @@ const UserReg = () => {
 
   return (
     <>
-      <div className="mx-auto flex flex-column md:w-3/6 mt-48 user border-2 border-violet-200 bg-violet-100 shadow-md rounded-md md:p-4 p-2">
+      <div className="mx-auto flex flex-column md:w-3/6 mt-40 user border-0 border-violet-200 bg-violet-100 shadow-md rounded-md md:p-4 p-2">
         <p className="md:text-4xl text-2xl font-extrabold text-violet-700 mb-4 bg-violet-200 p-3 rounded shadow-md">
           Collabo Register
         </p>

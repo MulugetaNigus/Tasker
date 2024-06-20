@@ -11,6 +11,9 @@ import ManageRooms from "./components/ManageRooms";
 import PageNotFound from "./components/PageNotFound";
 
 function App() {
+  // user auth
+  const Isauth = window.localStorage.getItem("TaskerUser");
+
   return (
     <>
       <Router>
@@ -21,8 +24,8 @@ function App() {
           <Route path="/JoinRoom" element={<Modal />} />
           <Route path="/AfterJoinRoom" element={<CardArea />} />
           <Route path="/CreateRoom" element={<CreateRoom />} />
-          <Route path="/rooms" element={ <ManageRooms /> } />
-          <Route path="*" element={ <PageNotFound /> } />
+          <Route path="/rooms" element={<ManageRooms />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </>

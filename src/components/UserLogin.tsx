@@ -50,6 +50,8 @@ const UserLogin = () => {
             if (result.data.message === "success") {
               seterrorLogger(result.data.message);
               setloading(false);
+              // to prevent the route, just true something here and validate in the app route
+              window.localStorage.setItem("TaskerUser", username.toString().toUpperCase());
               navigate("/tasker");
             }
             if (result.data.message === "Xpassword") {
@@ -71,7 +73,7 @@ const UserLogin = () => {
     <>
       <div className="mx-auto flex flex-column md:w-3/6 mt-48 user border-2 border-violet-200 bg-violet-100 shadow-md rounded-md md:p-4 p-2">
         <p className="md:text-4xl text-2xl font-extrabold text-violet-700 mb-4 bg-violet-200 p-3 rounded shadow-md">
-        Collabo Login
+          Collabo Login
         </p>
         {errorLogger && (
           <p className="text-center border-2 border-red-200 p-2 rounded-md bg-red-200 m-1 font-extra fs-6">

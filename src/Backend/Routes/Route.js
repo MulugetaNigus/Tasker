@@ -9,6 +9,7 @@ const {
   updateTask,
   userReg,
   userLogin,
+  deleteRoom,
 } = require("../Controller/TaskController");
 
 // init the router cames from the express packages
@@ -19,6 +20,7 @@ route.post("/add", addTask);
 route.get("/getTask", getTask);
 route.get("/search", getDevArea);
 route.put("/updateTask/:id", updateTask);
+route.delete("/delete" , deleteRoom)
 route.post("/register", userReg);
 route.post("/login", userLogin);
 

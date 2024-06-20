@@ -16,6 +16,7 @@ export interface ICard {
 // add task interfaces
 export interface ITask {
     roomID: string,
+    accessCode: String,
     devName: string,
     tasks: string[],
     techStack: string,

@@ -12,9 +12,10 @@ import { spawn } from "child_process";
 const CreateRoom: React.FC = () => {
   const [roomID, setRoomId] = useState("");
   const [devName, setDeveloperName] = useState("");
+  const [accessCode, setaccessCode] = useState("");
   const [tasks, setTasks] = useState<string[]>([]);
   const [techStack, settechStack] = useState<string>("");
-  const [allowUpdate, serallowUpdate] = useState(false);
+  const [allowUpdate, setallowUpdate] = useState<any>("");
   const [taskInput, setTaskInput] = useState("");
   const [GeneratedJoinCode, setGeneratedJoinCode] = useState<any>();
   const [loadingState, setloadingState] = useState<boolean>(false);
@@ -28,8 +29,8 @@ const CreateRoom: React.FC = () => {
 
   // handle to generate join code
   const handleGenerateJoinCode = () => {
-    setGeneratedJoinCode(GenerateJoinCode());
-    setRoomId(GenerateJoinCode);
+    setaccessCode(GenerateJoinCode());
+    // serallowUpdate(GenerateJoinCode);
   };
 
   // handle to clear the form
@@ -51,11 +52,14 @@ const CreateRoom: React.FC = () => {
     // first collect the datas from the inputs
     const data: ITask = {
       roomID,
+      accessCode,
       devName,
       tasks,
       techStack,
       allowUpdate,
     };
+
+    console.log(data);
 
     // make axios api calling here
     try {
@@ -102,10 +106,25 @@ const CreateRoom: React.FC = () => {
 
             {/* generate join code btn */}
             <label
+              htmlFor="roomId"
+              className="block text-sm font-medium text-violet-700 mt-3"
+            >
+              Access Code
+            </label>
+            <input
+              type="text"
+              id="roomId"
+              onChange={(e) => setaccessCode(e.target.value)}
+              value={accessCode}
+              className="mt-1 block placeholder-violet-400 w-full px-3 py-2 border border-violet-300 rounded-md shadow-sm focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+              placeholder="238765832948"
+            />
+            <div className="text-red-600 small">save this digits, if you want to delete this room letter !</div>
+            <label
               className="mt-2 cursor-pointer px-3 py-2 bg-violet-700 text-white text-sm font-medium rounded-md shadow-sm hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-50"
               onClick={() => handleGenerateJoinCode()}
             >
-              Generate Join Code
+              Generate Access Code
             </label>
 
             <label
