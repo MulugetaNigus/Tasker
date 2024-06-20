@@ -12,7 +12,10 @@ app.use(cors());
 // routes
 app.use("/api/v1", route);
 
+// env file
 const port = process.env.PORT || 8000;
+
+// app listening start here
 app.listen(port, () => {
   // db connections
   DBConnection();
